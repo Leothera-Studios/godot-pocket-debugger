@@ -1,0 +1,135 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjoweoe1en1y1"]
+
+[ext_resource type="Script" uid="uid://b1metgm40rmay" path="res://scripts/gdscript/script_app_main.gd" id="1_mi5n4"]
+[ext_resource type="FontFile" uid="uid://bm4pjlexvbc3y" path="res://content/fonts/Montserrat-Regular.ttf" id="2_2satx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mi5n4"]
+font = ExtResource("2_2satx")
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_tf4cb"]
+font = ExtResource("2_2satx")
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2satx"]
+bg_color = Color(0.2210335, 0.061611608, 0.2994792, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf4cb"]
+bg_color = Color(0.36903885, 0.13315837, 0.4869792, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rrp51"]
+font = ExtResource("2_2satx")
+font_size = 32
+
+[node name="screen_main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_mi5n4")
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.34799668, 0.19097899, 0.3880208, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="App Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Godot Pocket Debugger"
+label_settings = SubResource("LabelSettings_mi5n4")
+horizontal_alignment = 1
+
+[node name="IpField" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2satx")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "192.168.0.0"
+
+[node name="HBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ConnectButton" type="Button" parent="VBoxContainer/HBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_2satx")
+theme_override_font_sizes/font_size = 32
+text = "Connect"
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Status"
+label_settings = SubResource("LabelSettings_tf4cb")
+
+[node name="LogDisplay" type="TextEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_2satx")
+theme_override_font_sizes/font_size = 32
+editable = false
+wrap_mode = 1
+scroll_smooth = true
+
+[node name="ShareButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2satx")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_2satx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tf4cb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2satx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2satx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tf4cb")
+text = "Copy Log to Clipboard"
+
+[node name="PerformancePanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="VBoxContainer/PerformancePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FPS"
+label_settings = SubResource("LabelSettings_rrp51")
+
+[node name="MemoryLabel" type="Label" parent="VBoxContainer/PerformancePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Memory"
+label_settings = SubResource("LabelSettings_rrp51")
+horizontal_alignment = 1
+
+[node name="NodeCountLabel" type="Label" parent="VBoxContainer/PerformancePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Node Count"
+label_settings = SubResource("LabelSettings_rrp51")
+horizontal_alignment = 2
